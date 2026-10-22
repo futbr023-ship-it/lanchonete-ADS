@@ -1,0 +1,374 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* ===========================
+   DESIGN SYSTEM (variáveis)
+   =========================== */
+:root {
+    --cor-primaria: #d62828;
+    --cor-primaria-escura: #a4161a;
+    --cor-bebida: #1d6fb8;
+    --cor-bebida-escura: #14578f;
+    --cor-destaque: #f77f00;
+    --cor-fundo: #fff8f0;
+    --cor-texto: #2b2d42;
+    --cor-card: #ffffff;
+    --sombra-padrao: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --sombra-hover: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    margin: 0;
+}
+
+body.carrinho-aberto { overflow: hidden; }
+
+/* ===========================
+   CABEÇALHO
+   =========================== */
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 40px;
+    background-color: var(--cor-primaria);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--sombra-padrao);
+}
+
+.cabecalho h1 {
+    margin: 0;
+    font-size: 1.35rem;
+}
+
+.acoes-cabecalho {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.info-carrinho {
+    background: rgba(255, 255, 255, 0.22);
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.3s;
+}
+
+.info-carrinho:hover { background: rgba(255, 255, 255, 0.35); }
+
+.info-carrinho.pulsar { animation: pulsar 0.3s ease; }
+
+@keyframes pulsar {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+.btn-sair {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: #2b2d42;
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.btn-sair:hover { background-color: #1a1c2c; }
+
+/* ===========================
+   SEÇÕES E GRID
+   =========================== */
+.secao-cardapio { padding-top: 30px; }
+
+.titulo-secao {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    font-size: 1.5rem;
+}
+
+.vitrine-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    padding: 25px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card-produto {
+    background-color: var(--cor-card);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--sombra-padrao);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-produto:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--sombra-hover);
+}
+
+.imagem-produto {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.conteudo-card {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.conteudo-card h3 { margin: 0; font-size: 1.1rem; }
+
+.conteudo-card p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 0.9rem;
+    flex: 1;
+}
+
+.preco-destaque {
+    font-weight: 700;
+    color: var(--cor-primaria);
+    font-size: 1.2rem;
+}
+
+/* Botão Adicionar - LANCHES */
+.btn-adicionar {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--cor-primaria);
+    color: white;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+}
+
+.btn-adicionar:hover { background-color: var(--cor-primaria-escura); }
+.btn-adicionar:active { transform: scale(0.97); }
+.btn-adicionar.adicionado { background-color: #2a9d8f; }
+
+/* Botão Adicionar - BEBIDAS (azul) */
+.btn-bebida { background-color: var(--cor-bebida); }
+.btn-bebida:hover { background-color: var(--cor-bebida-escura); }
+.btn-bebida.adicionado { background-color: #2a9d8f; }
+
+/* ===========================
+   SIDEBAR DO CARRINHO
+   =========================== */
+.sidebar-carrinho {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    max-width: 100%;
+    height: 100vh;
+    background: white;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.2);
+    transform: translateX(105%);
+    transition: transform 0.35s ease;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.sidebar-carrinho.aberto { transform: translateX(0); }
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--cor-primaria);
+    color: white;
+}
+
+.sidebar-header h2 { margin: 0; font-size: 1.15rem; }
+
+.btn-fechar {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.9rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.lista-carrinho {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px 20px;
+}
+
+.carrinho-vazio {
+    text-align: center;
+    color: #6b7280;
+    margin-top: 40px;
+}
+
+.item-carrinho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+}
+
+.item-info span { color: #6b7280; font-size: 0.78rem; }
+
+.item-controles {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-qtd {
+    width: 28px;
+    height: 28px;
+    border: 1px solid #ddd;
+    background: #f8f8f8;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.btn-qtd:hover { background: #e8e8e8; }
+
+.qtd {
+    min-width: 22px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.btn-remover {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: 4px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.btn-remover:hover { opacity: 1; }
+
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    background: #fff3e0;
+}
+
+.sidebar-footer p {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin: 0 0 12px;
+}
+
+#total-carrinho { color: var(--cor-primaria); }
+
+.btn-finalizar {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2a9d8f;
+    color: white;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-finalizar:hover { background-color: #21867a; }
+.btn-finalizar.aviso { background-color: var(--cor-primaria); }
+
+.pedido-sucesso {
+    text-align: center;
+    padding: 40px 10px;
+    font-weight: 600;
+    color: #2a9d8f;
+    font-size: 1.05rem;
+    line-height: 1.9;
+}
+
+/* Overlay escuro atrás do carrinho */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 999;
+}
+
+.overlay.ativo {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ==========================================
+   AULA 4: RESPONSIVIDADE (MOBILE)
+   ========================================== */
+
+@media (max-width: 900px) {
+    .vitrine-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+
+    /* Empilha o título, o carrinho e o botão de sair */
+    .cabecalho {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        padding: 15px;
+    }
+
+    /* Muda a vitrine de 3 colunas para apenas 1 coluna */
+    .vitrine-grid {
+        grid-template-columns: 1fr;
+        padding: 0 15px;
+    }
+
+    .titulo-secao { padding: 0 15px; }
+
+    /* No celular, o carrinho lateral ocupa 100% da tela */
+    #sidebar-carrinho {
+        width: 100%;
+    }
+}

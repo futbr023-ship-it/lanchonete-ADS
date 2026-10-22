@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Lanchonete ADS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container-login">
+        <section class="card-login">
+            <h1>Criar Conta</h1>
+            <p>Junte-se à lanchonete mais saborosa da cidade!</p>
+
+            <form id="form-cadastro">
+                <div class="grupo-input">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" required placeholder="Digite seu nome">
+                </div>
+
+                <div class="grupo-input">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" required placeholder="exemplo@email.com">
+                </div>
+
+                <div class="grupo-input">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" required placeholder="Mínimo 6 caracteres">
+                </div>
+
+                <div class="grupo-input">
+                    <label for="confirma-senha">Confirmar Senha</label>
+                    <input type="password" id="confirma-senha" required placeholder="Repita sua senha">
+                </div>
+
+                <button type="submit">Cadastrar</button>
+            </form>
+
+            <!-- Onde as mensagens de erro/sucesso serão injetadas via JS -->
+            <div id="mensagem"></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
